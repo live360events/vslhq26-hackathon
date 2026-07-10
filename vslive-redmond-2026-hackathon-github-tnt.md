@@ -264,7 +264,7 @@ Brief description of the components and how they connect. A diagram (image, merm
 
 ### Prerequisites
 
-- List required SDKs, runtimes, accounts, API keys
+- List required SDKs, runtimes, accounts, if any API Keys are needed (but not the value of the key itself)
 
 ### Setup
 
