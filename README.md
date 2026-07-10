@@ -177,6 +177,10 @@ Participants and teams retain full ownership and rights to their intellectual pr
 
 Light snacks and beverages will be provided.
 
+## Getting Started
+
+Ready to set up your repo? The [Setting Up Your GitHub Repo for the VSLive! Redmond 2026 Hackathon](https://github.com/live360events/vslhq26-hackathon/blob/main/vslive-redmond-2026-hackathon-github-tnt.md) guide covers everything you need before the event starts: creating your GitHub account and repository, organizing a team, giving the moderators access, naming conventions and topics, the README template, and how to submit your project.
+
 ## Useful Links
 
 - [Hackathon Page](https://vslive.com/events/microsofthq-2026/hackathon.aspx)
