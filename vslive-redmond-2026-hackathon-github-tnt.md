@@ -1,8 +1,10 @@
 # Setting Up Your GitHub Repo for the VSLive! Redmond 2026 Hackathon
 
-Welcome, hackers. This guide walks you through everything you need to get a GitHub-hosted project ready before the event starts, plus how to give the moderators (Brian Randell and Phil Japikse) access so we can evaluate your work.
+Welcome, hackers. This guide walks you through everything you need to get a GitHub-hosted project ready before the event starts, plus how to give the moderators access so we can evaluate your work.
 
 Assumed knowledge: you know Git basics (clone, commit, branch, push, pull). If you need a refresher, the [Pro Git book](https://git-scm.com/book/en/v2) is free and excellent.
+
+**This page was updaged July 29, 2026.**
 
 ## Moderator GitHub Handles
 
@@ -43,7 +45,11 @@ Full plan comparison: [GitHub plans documentation](https://docs.github.com/en/ge
 
 ## 2. Create a Repository
 
-You can create the repo under your personal account or under an organization. If you're **flying solo**, a personal repo is fine. If you're **on a team**, an organization is strongly recommended (see Section 3).
+You can create the repo under your personal account or under an organization.
+
+If you're **flying solo**, a personal repo is fine.
+
+If you're **on a team**, an organization is strongly recommended (see Section 3).
 
 ### Create a personal repo
 
@@ -126,11 +132,11 @@ Same steps as a personal repo, but under the org:
 
 ### Optional: create a Moderators team
 
-If you want a clean, reusable way to grant read-only access to multiple people, create a team:
+With five moderators to add, this is the least tedious option. It also gives you a clean, reusable way to grant read-only access to all of us at once. Adding a moderator to the team also invites that person to become a member of your organization:
 
 1. In the org, go to **Teams** → **New team**.
 2. Name it something like `moderators`.
-3. Add `brianrandell` and `skimedic` as members.
+3. Add all five moderator handles as members (see [Moderator GitHub Handles](#moderator-github-handles) at the top of this guide).
 4. Go to your repo → **Settings** → **Collaborators and teams** → **Add teams**.
 5. Add the `moderators` team with the **Read** role.
 
@@ -141,6 +147,17 @@ Reference: [Organizing members into teams](https://docs.github.com/en/organizati
 ## 4. Give the Moderators Access
 
 There are three paths depending on how you set up your repo. Pick the one that matches your setup.
+
+### What we do and don't need
+
+We read your code and watch your demo video. **We are not going to run your project**, so we don't need any credentials from you:
+
+- **Don't** send us API keys, tokens, connection strings, or a filled-in `.env` file
+- **Don't** add us to your Azure subscription or provision accounts on our behalf
+- **Don't** commit secrets so we can "see how it works" — see Section 7
+- **Do** write a solid README (Section 6). Since we're not running the thing, that's what carries the explanation.
+
+If you do accidentally share a credential with us, rotate it. We'd rather you over-rotate than leave a live key floating around.
 
 ### Path A: Public personal repo (simplest)
 
@@ -156,9 +173,8 @@ To add us anyway:
 
 1. Go to your repo → **Settings** → **Collaborators**.
 2. Click **Add people**.
-3. Enter `brianrandell`, send invite.
-4. Enter `skimedic`, send invite.
-5. We'll accept via email or GitHub notification.
+3. Enter each of the five moderator handles listed at the top of this guide, sending an invite for each.
+4. We'll accept via email or GitHub notification.
 
 We won't push to your repo, but be aware the permissions technically allow it. If you want true read-only, use Path C.
 
@@ -172,12 +188,11 @@ Organizations support proper read-only access. Two ways to do it:
 
 1. Go to your repo → **Settings** → **Collaborators and teams**.
 2. Click **Add people**.
-3. Enter `brianrandell`, choose the **Read** role, send invite.
-4. Enter `skimedic`, choose the **Read** role, send invite.
+3. Enter each of the five moderator handles listed at the top of this guide, choose the **Read** role for each, and send the invites.
 
 #### Option 2: Moderators team (see Section 3)
 
-Create a team with the two of us as members and grant the team **Read** access to the repo.
+Create a team with all five of us as members and grant the team **Read** access to the repo. With five handles to manage, this is usually less tedious than adding individual collaborators.
 
 Either option gives us read-only access. We can clone, view issues, view actions, and comment on PRs, but we can't push code.
 
@@ -187,9 +202,9 @@ Reference: [Managing an individual's access to an organization repository](https
 
 Judging wraps and winners are announced Thursday morning. After that, feel free to remove moderator access to your repo or org. We don't need to stay in there. To clean up:
 
-- **Personal repo (Path B):** Repo → **Settings** → **Collaborators** → remove `brianrandell` and `skimedic`.
-- **Org repo with outside collaborators (Path C, Option 1):** Repo → **Settings** → **Collaborators and teams** → remove both handles.
-- **Org repo with moderators team (Path C, Option 2):** Org → **Teams** → **moderators** → remove members, or remove the team's access to the repo, or delete the team.
+- **Personal repo (Path B):** Repo → **Settings** → **Collaborators** → remove all five moderator handles.
+- **Org repo with outside collaborators (Path C, Option 1):** Repo → **Settings** → **Collaborators and teams** → remove all five handles.
+- **Org repo with moderators team (Path C, Option 2):** Org → **Teams** → **moderators** → remove the team's access to the repo or delete the team. Then go to Org → **People** and remove all five moderators from the organization; removing someone from only the team leaves them as an organization member.
 
 If you decide to make a private repo public after the event to share your project, you can do that in **Settings** → **General** → **Danger Zone** → **Change repository visibility**.
 
@@ -231,7 +246,9 @@ Reference: [Classifying your repository with topics](https://docs.github.com/en/
 
 ## 6. README Template
 
-Copy this into your `README.md` and fill it in. A good README makes judging faster and helps other attendees learn from your project after the event.
+Copy this into your `README.md` and fill it in.
+
+This matters more than you might expect. We judge from your code and your demo video, and **we don't run your project** — so the README is what explains everything the video doesn't show: what you built, how it's put together, what you'd do next. A thin README costs you. A good one makes judging faster and helps other attendees learn from your project after the event.
 
 ````markdown
 # Project Name
@@ -269,7 +286,8 @@ Brief description of the components and how they connect. A diagram (image, merm
 
 ### Prerequisites
 
-- List required SDKs, runtimes, accounts, if any API Keys are needed (but not the value of the key itself)
+- List required SDKs, runtimes, and accounts
+- Note which API keys or secrets the project needs — name them and describe their shape, never paste the values
 
 ### Setup
 
@@ -302,6 +320,8 @@ Be honest about what doesn't work yet. Judges appreciate this.
 
 MIT (or your choice)
 ````
+
+> **A note on Getting started / Setup:** we aren't going to run your project, so those instructions are not part of judging. Fill them in for posterity — for the version of you who comes back to this repo in six months, and for anyone who finds it after the event. Don't spend Night 2 polishing them.
 
 ---
 
@@ -381,7 +401,7 @@ For a two-day hackathon, a heavyweight branch strategy is overkill. But:
 
 ### Optional: branch protection on `main`
 
-If you're on a team, consider protecting `main`:
+If you're on a team, consider protecting `main`. Protected branches are available for public repositories on GitHub Free. Private organization repositories require GitHub Team or a higher plan:
 
 1. Repo → **Settings** → **Branches** → **Add branch protection rule**
 2. Branch name pattern: `main`
@@ -401,7 +421,7 @@ The hackathon rules require all assets and dependencies to be properly licensed.
 - **Datasets:** many public datasets are research-only or have attribution requirements. Verify before you fine-tune or ship anything.
 - **Images, icons, fonts, sounds:** stock sites and free-tier assets often have attribution or non-commercial clauses. Read the license, not the marketing copy.
 - **AI-generated code:** GitHub Copilot output is yours to use per Microsoft's terms. Other tools vary. Check.
-- **Sample code from blog posts or Stack Overflow:** Stack Overflow contributions are CC BY-SA, which means attribution required. Blog snippets vary.
+- **Sample code from blog posts or Stack Overflow:** Stack Overflow contributions are CC BY-SA, which requires attribution and may require derivative work to use the same license. Blog snippets vary.
 
 If you use anything with attribution requirements, add a `NOTICE` or `CREDITS.md` file. If a license conflicts with what you want to do, swap the dependency before you build too much on it.
 
@@ -409,7 +429,7 @@ Reference: [choosealicense.com](https://choosealicense.com/) for picking your ow
 
 ---
 
-## 8. Submitting Your Repo
+## 8. Your Demo Video and Submitting Your Repo
 
 When the hackathon submission form opens, you'll provide:
 
@@ -417,7 +437,66 @@ When the hackathon submission form opens, you'll provide:
 - Team name and members (with GitHub handles)
 - Declared primary category (and optional secondary)
 - **Demo video (required)** — recorded and submitted on Night 2 per the event schedule
-- Any special instructions to run your project
+- Optional setup or run instructions for post-event readers. We won't run your project during judging (we WILL look at the project structure, the code), but these "how to run" instructions can help anyone who explores the repo later.
+
+The video is the first thing we watch. In a lot of cases it's the *only* thing we watch before we form an opinion, because we have a stack of projects and two days of sleep debt. Two hours spent on a great three-minute video is worth more to your score than two more hours of features nobody sees.
+
+### What makes a good demo video
+
+**Show the software running.** The single biggest differentiator is whether we see your project actually work. Live screen capture of the real thing beats slides, beats architecture diagrams, beats a narrated walkthrough of your code. If it works, show it working. If part of it doesn't work, show the part that does and be honest about the rest.
+
+**Keep it to three minutes.** Long videos aren't rewarded, and a rambling ten-minute recording reads as "we didn't have time to edit," which is the same signal as "we didn't have time to finish." The moderators don't have weeks to review. They're counting on you to be concise and show the magic that you've built.
+
+**A structure that works:**
+
+| Time | What |
+| --- | --- |
+| 0:00–0:15 | Project name, team name, category. One sentence on what it does. |
+| 0:15–0:45 | The problem. Why would anyone want this? |
+| 0:45–2:30 | **The demo.** The working software, doing the thing, on real input. |
+| 2:30–2:50 | How it's built — quick architecture, models/services used. |
+| 2:50–3:00 | What's not done yet, and what you'd do next. |
+
+Lead with the payoff. If your project generates something impressive, show the impressive thing in the first thirty seconds, then explain how you got there. Don't make us wait through setup to find out whether it's worth watching.
+
+**Narration is optional.** A silent screen capture with on-screen text callouts scores exactly the same as a narrated one. Do not skip the video because you don't want to record your voice, don't have a quiet spot in the hotel, or would rather not be the one talking. If you go silent:
+
+- Add a title card at the start (project, team, category) and hold it for ~5 seconds
+- Use short text overlays to call out what's happening: "user asks a question", "agent picks a tool", "result written to the database"
+- Slow down slightly — the viewer has no voice guiding their eye, so give them a beat to read the screen
+
+If you *do* narrate: script the first fifteen seconds so you don't open with "um, so, basically," use a headset mic rather than your laptop's built-in mic, and don't apologize for anything on camera. Just state what it does.
+
+**Make it legible.** We're often watching on a laptop screen, sometimes projected.
+
+- Record at **1080p**, not 4K. Higher resolution just costs you file size and makes your text smaller relative to the frame.
+- Bump your editor and terminal font size up before you record. What's comfortable at arm's length is unreadable in a shrunk-down video player.
+- Zoom in on the part that matters. ZoomIt on Windows is built for exactly this.
+- Turn off notifications. Focus Assist / Do Not Disturb, on. Nothing kills a demo like a Teams popup.
+- Close unrelated tabs, clean up the desktop, and check what's visible in your taskbar and browser bookmarks bar.
+
+**Don't leak secrets on camera.** This is the one that actually bites people. Before you hit record, check for API keys in `.env` files, tokens in terminal scrollback, connection strings in `appsettings.json`, keys visible in an Azure portal tab, and your own email address in a signed-in account menu. If something slips through, blur it in editing or re-record — a key that appears in a video committed to a public repo is a leaked key. Rotate it.
+
+**Edit out the dead air.** Nobody wants to watch `npm install`, a cold-start delay, or you finding the right window. Cut it, or speed it up and put a caption over it.
+
+**Do a ten-second test first.** Record ten seconds, stop, play it back. Check that the audio recorded (if you wanted audio), the right screen was captured, and the text is readable. This catches about 90% of the "our recording was silent" and "we captured the wrong monitor" disasters, and it costs you fifteen seconds.
+
+### Common mistakes
+
+- Recording a walkthrough of the source code instead of the running app
+- Ten minutes of unedited screen capture
+- 4K recording that busts the 100 MB limit an hour before the deadline
+- Silent video that was *supposed* to have narration (the mic was muted — see: test recording)
+- Font sizes nobody can read
+- No title card, so we don't know whose project we're watching
+- Leaving the whole video to the last twenty minutes of Night 2
+
+### Recording guides
+
+Step-by-step instructions for both platforms, covering silent and narrated recording, editing, and getting the file under 100 MB:
+
+- **[Recording your demo video on Windows 11](vslive-redmond-2026-hackathon-video-windows.md)** — Snipping Tool, ZoomIt, Xbox Game Bar, Clipchamp
+- **[Recording your demo video on macOS](vslive-redmond-2026-hackathon-video-macos.md)** — Screenshot toolbar, QuickTime Player, ZoomIt for Mac, iMovie
 
 ### Where to put the demo video
 
@@ -433,11 +512,19 @@ your-repo/
 
 Then reference it in the README's Demo section.
 
-**Format:** MP4 (H.264) is preferred. Keep the file under **100 MB** — that's GitHub's per-file hard limit for non-LFS files. For a 3–5 minute 1080p demo, that's easy to hit. If your recording is bigger, re-encode at a lower bitrate or trim it before committing.
+**Format:** MP4 (H.264) is preferred, but a `.mov` straight out of QuickTime or the macOS Screenshot toolbar is also fine — we can play it, and it saves you a conversion step. Don't burn time on a format change you don't need.
 
-**Before committing, check `.gitignore`** so your video isn't silently excluded (see Section 7).
+**Size is the part that actually matters.** Keep the file under **100 MB** — that's GitHub's per-file hard limit for non-LFS files. For a 3–5 minute 1080p demo, that's easy to hit. If your recording is bigger, re-encode at a lower bitrate or trim it before committing. Both platform guides above cover this.
 
-**Alternative:** if you'd rather host on YouTube or Loom, put the link in your README. Either works, but committed video is what we prefer.
+**Before committing, check `.gitignore`** so your video isn't silently excluded (see Section 7):
+
+```bash
+git check-ignore -v demo/demo.mp4
+```
+
+No output means you're fine. Any output means a pattern is excluding it — fix that before you commit.
+
+**Alternative:** if you'd rather host on YouTube or Loom, put the link in your README. Either works, but committed video is what we prefer. If you use YouTube, set it to **Unlisted**, not Private — Private means we can't watch it, and every year somebody does this.
 
 Make sure moderators have access (Section 4) **before** you submit. If we can't view your code, we can't judge it.
 
@@ -465,4 +552,4 @@ Make sure moderators have access (Section 4) **before** you submit. If we can't 
 
 ---
 
-Questions during the event? Find Brian or Phil at the moderator table. Happy hacking.
+Questions during the event? Find any of the moderators at the moderator table. Happy hacking.
