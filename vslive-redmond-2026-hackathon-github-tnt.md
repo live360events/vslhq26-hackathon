@@ -4,10 +4,15 @@ Welcome, hackers. This guide walks you through everything you need to get a GitH
 
 Assumed knowledge: you know Git basics (clone, commit, branch, push, pull). If you need a refresher, the [Pro Git book](https://git-scm.com/book/en/v2) is free and excellent.
 
-**Moderator GitHub handles:**
+## Moderator GitHub Handles
 
-- `brianrandell`
-- `skimedic`
+Updated July 29, 2026
+
+- `brianrandell` (Brian A. Randell)
+- `skimedic` (Philip Japikse)
+- `AllenConway` (Allen Conway)
+- `ericdboyd` (Eric D. Boyd)
+- `TonyChampion` (Tony Champion)
 
 ---
 
