@@ -1,4 +1,8 @@
-# Setting Up Your GitHub Repo for the VSLive! Redmond 2026 Hackathon
+# Please Make Sure You Read Danielle's E-mail from Today
+
+It has a link to the submission form.
+
+## Setting Up Your GitHub Repo for the VSLive! Redmond 2026 Hackathon
 
 Welcome, hackers. This guide walks you through everything you need to get a GitHub-hosted project ready before the event starts, plus how to give the moderators access so we can evaluate your work.
 
